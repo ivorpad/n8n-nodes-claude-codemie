@@ -1,0 +1,55 @@
+{
+	"name": "n8n-nodes-claude-codemie",
+	"version": "0.1.0",
+	"description": "CodeMie SSO proxy companion for n8n-nodes-claude-agent-sdk. Installing this package enables the CodeMie Proxy authentication option in the Claude Agent SDK node.",
+	"license": "MIT",
+	"packageManager": "pnpm@10.33.0",
+	"keywords": [
+		"n8n-community-node-package",
+		"n8n",
+		"claude",
+		"claude-agent-sdk",
+		"codemie",
+		"sso"
+	],
+	"author": {
+		"name": "Ivor",
+		"email": "ivor@gradion.io"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ivorpad/n8n-nodes-claude-codemie.git"
+	},
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"build": "tsc -p tsconfig.json && node scripts/copy-assets.mjs",
+		"typecheck": "tsc --noEmit",
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"prepublishOnly": "pnpm run build"
+	},
+	"files": [
+		"dist",
+		"!dist/tsconfig.tsbuildinfo"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"credentials": [
+			"dist/credentials/CodeMieSsoApi.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/CodeMieAuth/CodeMieAuth.node.js"
+		]
+	},
+	"dependencies": {
+		"@codemieai/code": ">=0.5.0"
+	},
+	"devDependencies": {
+		"@types/node": "^20.0.0",
+		"n8n-workflow": "^2.25.0",
+		"prettier": "3.6.2",
+		"typescript": "5.9.2",
+		"vitest": "^4.0.14"
+	}
+}

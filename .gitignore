@@ -1,0 +1,16 @@
+dist
+node_modules
+coverage
+.env
+.env.*
+!.env.example
+
+# Local artifacts
+.DS_Store
+*.log
+*.tmp
+*.tgz
+
+# Local agent/runtime state
+.claude/
+.codex/
