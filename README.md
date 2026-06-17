@@ -13,21 +13,18 @@ Install straight from GitHub into your n8n custom-nodes folder. The package buil
 itself on install (its `prepare` script runs the TypeScript build) and pulls in the
 `@codemieai/code` CLI automatically.
 
+> Prerequisites on the host: **`git`** and Node.js (npm shells out to `git` to clone,
+> then runs the build). On a bare image install git first, e.g. `apt-get install -y git`.
+
 ```bash
 mkdir -p ~/.n8n/nodes && cd ~/.n8n/nodes
 npm init -y >/dev/null 2>&1   # only if this folder has no package.json yet
 npm install git+https://github.com/ivorpad/n8n-nodes-claude-codemie.git
 ```
 
-This companion needs the **CodeMie-bridge build of the main node** alongside it — the
-npm release of `n8n-nodes-claude-agent-sdk` does not include the bridge yet, so install
-it from Git too:
-
-```bash
-npm install git+https://github.com/ivorpad/n8n-nodes-claude-agent-sdk.git#feat/codemie-proxy-bridge
-```
-
-Restart n8n afterward. To update later, re-run the same `npm install` command.
+This companion needs a build of **`n8n-nodes-claude-agent-sdk` that includes the CodeMie
+bridge** installed alongside it (the current npm release does not include it yet). Install
+that build the same way, then restart n8n. To update later, re-run `npm install`.
 
 ## How it works
 
