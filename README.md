@@ -22,9 +22,15 @@ npm init -y >/dev/null 2>&1   # only if this folder has no package.json yet
 npm install git+https://github.com/ivorpad/n8n-nodes-claude-codemie.git
 ```
 
-This companion needs a build of **`n8n-nodes-claude-agent-sdk` that includes the CodeMie
-bridge** installed alongside it (the current npm release does not include it yet). Install
-that build the same way, then restart n8n. To update later, re-run `npm install`.
+This companion needs **`n8n-nodes-claude-agent-sdk` with the CodeMie bridge** installed
+alongside it. The bridge ships on that package's default branch, so install it from GitHub
+the same way — **no `#branch` suffix needed**:
+
+```bash
+npm install git+https://github.com/ivorpad/n8n-nodes-claude-agent-sdk.git
+```
+
+Then restart n8n. To update later, re-run both `npm install` commands.
 
 ## How it works
 
