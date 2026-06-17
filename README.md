@@ -7,6 +7,28 @@ Agent SDK node detects it at load and adds a **CodeMie Proxy** authentication
 option. There is no environment variable to toggle. Authenticate to CodeMie
 entirely from the n8n UI — no terminal required.
 
+## Install (self-hosted, via Git — no npm registry)
+
+Install straight from GitHub into your n8n custom-nodes folder. The package builds
+itself on install (its `prepare` script runs the TypeScript build) and pulls in the
+`@codemieai/code` CLI automatically.
+
+```bash
+mkdir -p ~/.n8n/nodes && cd ~/.n8n/nodes
+npm init -y >/dev/null 2>&1   # only if this folder has no package.json yet
+npm install git+https://github.com/ivorpad/n8n-nodes-claude-codemie.git
+```
+
+This companion needs the **CodeMie-bridge build of the main node** alongside it — the
+npm release of `n8n-nodes-claude-agent-sdk` does not include the bridge yet, so install
+it from Git too:
+
+```bash
+npm install git+https://github.com/ivorpad/n8n-nodes-claude-agent-sdk.git#feat/codemie-proxy-bridge
+```
+
+Restart n8n afterward. To update later, re-run the same `npm install` command.
+
 ## How it works
 
 1. The main node detects this package via `require.resolve('n8n-nodes-claude-codemie')`.
@@ -75,4 +97,4 @@ For publishing as a verified n8n community node, additionally run
 
 ## License
 
-MIT
+Apache-2.0 — inherited from [`@codemieai/code`](https://www.npmjs.com/package/@codemieai/code). See [LICENSE](./LICENSE).

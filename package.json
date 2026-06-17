@@ -2,7 +2,7 @@
 	"name": "n8n-nodes-claude-codemie",
 	"version": "0.1.0",
 	"description": "CodeMie SSO proxy companion for n8n-nodes-claude-agent-sdk. Installing this package enables the CodeMie Proxy authentication option in the Claude Agent SDK node.",
-	"license": "MIT",
+	"license": "Apache-2.0",
 	"packageManager": "pnpm@10.33.0",
 	"keywords": [
 		"n8n-community-node-package",
@@ -27,7 +27,8 @@
 		"typecheck": "tsc --noEmit",
 		"test": "vitest run",
 		"test:watch": "vitest",
-		"prepublishOnly": "pnpm run build"
+		"prepare": "npm run build",
+		"prepublishOnly": "npm run build"
 	},
 	"files": [
 		"dist",
